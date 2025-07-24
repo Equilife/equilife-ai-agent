@@ -2,45 +2,45 @@
 
 ## Instalasi
 
-1. **Clone repository ini:**
-   ```bash
-   git clone https://github.com/Equilife/equilife-ai-agent.git
-   cd equilife-ai-agent
-   ```
-
-2. **Buat virtual environment (opsional tapi direkomendasikan):**
+1. **Buat virtual environment:**
    ```bash
    python -m venv .venv
    ```
 
-3. **Aktifkan virtual environment:**
-   - **Windows:**
-     ```bash
-     .venv\Scripts\activate
-     ```
-   - **Mac/Linux:**
-     ```bash
-     source .venv/bin/activate
-     ```
+2. **Aktifkan virtual environment:**
+   ```powershell
+   .venv\Scripts\Activate.ps1
+   ```
 
-4. **Install dependencies:**
-   > Pastikan ada file `requirements.txt` atau `pyproject.toml` di repo ini. Jika belum ada, tambahkan sesuai kebutuhan project Anda.
+3. **Install dependency utama:**
    ```bash
-   pip install -r requirements.txt
+   pip install google-adk
+   ```
+
+4. **Buat file `.env` di dalam folder agent** (misal: `nutritional_coach_agent/.env` atau `workout_agent/.env`)
+
+   Isi file `.env` dengan:
+   ```env
+   GOOGLE_GENAI_USE_VERTEXAI=FALSE
+   GOOGLE_API_KEY=PASTE_YOUR_ACTUAL_API_KEY_HERE
    ```
 
 ## Menjalankan Project
 
-- Jalankan agent sesuai kebutuhan, misal:
+- Untuk menjalankan dev UI, gunakan perintah berikut:
   ```bash
-  python -m nutritional_coach_agent.agent
-  python -m workout_agent.agent
+  adk web
+  ```
+
+- Untuk menjalankan local FastAPI server (uji cURL lokal sebelum deploy):
+  ```bash
+  adk api_server
   ```
 
 ## Catatan Penting
 - **Jangan upload file `.env` dan `.venv/` ke repository.**
 - Simpan konfigurasi rahasia di file `.env` (sudah di-ignore oleh git).
-- Untuk menambah dependensi, gunakan `pip install <package>` lalu update `requirements.txt` dengan `pip freeze > requirements.txt`.
+- Untuk menambah dependensi lain, gunakan `pip install <package>` lalu update `requirements.txt` dengan `pip freeze > requirements.txt` jika diperlukan.
 
 ---
 
